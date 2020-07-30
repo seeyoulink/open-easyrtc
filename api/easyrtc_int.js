@@ -3340,19 +3340,26 @@ var Easyrtc = function() {
      *    );
      */
     this.getRoomList = function(callback, errorCallback) {
-        sendSignalling(null, "getRoomList", null,
-                function(msgType, msgData) {
-                    callback(msgData.roomList);
-                },
-                function(errorCode, errorText) {
-                    if (errorCallback) {
-                        errorCallback(errorCode, errorText);
-                    }
-                    else {
-                        self.showError(errorCode, errorText);
-                    }
-                }
-        );
+        if (callback) {
+            callback([]);
+        }
+
+        if (errorCallback) {
+            callback([]);
+        }
+        // sendSignalling(null, "getRoomList", null,
+        //         function(msgType, msgData) {
+        //             callback(msgData.roomList);
+        //         },
+        //         function(errorCode, errorText) {
+        //             if (errorCallback) {
+        //                 errorCallback(errorCode, errorText);
+        //             }
+        //             else {
+        //                 self.showError(errorCode, errorText);
+        //             }
+        //         }
+        // );
     };
 
     /** Value returned by easyrtc.getConnectStatus if the other user isn't connected to us. */
